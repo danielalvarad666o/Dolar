@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dolar.Views.Inicio">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <LinearGradientBrush x:Key="GradientBackground" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#5F9831" Offset="0.0" />
+                <GradientStop Color="#C9C32C" Offset="1.0" />
+            </LinearGradientBrush>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!-- Aplica el fondo degradado al ContentPage completo -->
+    <ContentPage.Background>
+        <StaticResource Key="GradientBackground" />
+    </ContentPage.Background>
+
+    
+    <Grid>
+        
+        <Image x:Name="animatedImage"
+           Source="inicio.png"
+           Aspect="AspectFit"
+           HorizontalOptions="Center"  
+            VerticalOptions="CenterAndExpand"
+          />
+    </Grid>
+
+
+</ContentPage>
