@@ -4,10 +4,75 @@
              x:Class="Dolar.Views.Base"
              Background="Black"
              Title="Base">
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <!-- Imagen en la parte superior -->
         <Image Source="baseimg.jpg"
                Aspect="AspectFill"
-               HeightRequest="200" 
+               HeightRequest="200"
                HorizontalOptions="FillAndExpand"/>
+
+        <!-- Título del tipo de cambio -->
+        <Label Text="Tipo de cambio base"
+               FontSize="Large"
+               FontAttributes="Bold"
+               TextColor="White"
+               HorizontalOptions="Start"/>
+
+        <!-- Subtítulo del Picker -->
+        <Label Text="Tipo de cambio"
+               FontSize="Medium"
+               TextColor="White"
+               HorizontalOptions="Start"/>
+
+        <!-- Picker para el tipo de cambio -->
+        <Frame Padding="10"
+               BackgroundColor="White"
+               CornerRadius="10"
+               HasShadow="True"
+               HorizontalOptions="FillAndExpand">
+            <HorizontalStackLayout Spacing="10">
+                <!-- Imagen de la bandera MX desde la carpeta flags/1x1 -->
+                <Image  Source="1x1/ad.svg"
+                       WidthRequest="40"
+                       HeightRequest="30"/>
+                
+            
+                <VerticalStackLayout>
+                    <Label Text="MX"
+                           FontSize="Medium"
+                           TextColor="Black"/>
+                    <Label Text="MXN Peso"
+                           FontSize="Small"
+                           TextColor="Gray"/>
+                </VerticalStackLayout>
+                <Picker Title="Selecciona un país"
+                        HorizontalOptions="EndAndExpand"
+                        WidthRequest="150">
+                    <!-- Opciones para seleccionar el tipo de cambio -->
+                    <Picker.Items>
+                        <x:String>MXN Peso</x:String>
+                        <x:String>USD Dólar</x:String>
+                        <x:String>EUR Euro</x:String>
+                    </Picker.Items>
+                </Picker>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- Botón para establecer el tipo de cambio con degradado -->
+        <Button Text="Establecer"
+                TextColor="Black"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                HorizontalOptions="FillAndExpand">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#5F9831" Offset="0.0" />
+                    <GradientStop Color="#C9C32C" Offset="1.0" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
     </VerticalStackLayout>
+   
 </ContentPage>
