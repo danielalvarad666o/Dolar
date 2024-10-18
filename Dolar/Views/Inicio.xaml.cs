@@ -8,9 +8,11 @@ namespace Dolar.Views
         public Inicio()
         {
             InitializeComponent();
-
+            NavigationPage.SetHasNavigationBar(this, false);
             // Navegar después de 5 segundos
             this.Appearing += Inicio_Appearing;
+            
+
         }
 
         private async void Inicio_Appearing(object sender, EventArgs e)

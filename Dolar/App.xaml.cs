@@ -9,8 +9,9 @@ namespace Dolar
         public App()
         {
             InitializeComponent();
-            Title = string.Empty;
+            NavigationPage.SetHasNavigationBar(this, false);
             MainPage =  new  NavigationPage(new Inicio());
+            
 
         }
     }
