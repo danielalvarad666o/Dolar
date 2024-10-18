@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dolar.Views.Cambio"
+             Title="Cambio">
+    <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="Black">
+
+        <!-- Primer tipo de cambio (hereda de Base) -->
+        <Frame Padding="15" BackgroundColor="White" CornerRadius="15" HasShadow="True">
+            <HorizontalStackLayout Spacing="10">
+                <!-- Imagen de la bandera -->
+                <Image Source="{Binding FlagImage}" WidthRequest="40" HeightRequest="40" Aspect="AspectFill"/>
+
+                <!-- Información de tipo de cambio -->
+                <VerticalStackLayout>
+                    <Label Text="{Binding CountryCode}" FontSize="Large" TextColor="Black"/>
+                    <Label Text="{Binding CurrencyName}" FontSize="Small" TextColor="Gray"/>
+                </VerticalStackLayout>
+
+                <!-- Precio y equivalencia -->
+                <VerticalStackLayout HorizontalOptions="EndAndExpand">
+                    <Label Text="1 MXN = " FontSize="Medium" TextColor="Black"/>
+                    <Label Text="0.050 USD" FontSize="Small" TextColor="Gray"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- Segundo tipo de cambio (USD) -->
+        <Frame Padding="15" BackgroundColor="White" CornerRadius="15" HasShadow="True">
+            <HorizontalStackLayout Spacing="10">
+                <!-- Imagen de la bandera -->
+                <Image Source="us.png" WidthRequest="40" HeightRequest="40" Aspect="AspectFill"/>
+
+                <!-- Información de tipo de cambio -->
+                <VerticalStackLayout>
+                    <Label Text="USD" FontSize="Large" TextColor="Black"/>
+                    <Label Text="USD Dólar" FontSize="Small" TextColor="Gray"/>
+                </VerticalStackLayout>
+
+                <!-- Precio y equivalencia -->
+                <VerticalStackLayout HorizontalOptions="EndAndExpand">
+                    <Label Text="1 USD = " FontSize="Medium" TextColor="Black"/>
+                    <Label Text="20.09 MXN" FontSize="Small" TextColor="Gray"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- Botones de Comprar y Vender -->
+        <Button Text="Comprar" TextColor="White" FontAttributes="Bold" CornerRadius="10"
+                BackgroundColor="#FF4500" HorizontalOptions="FillAndExpand" HeightRequest="50"/>
+
+        <Button Text="Vender" TextColor="White" FontAttributes="Bold" CornerRadius="10"
+                BackgroundColor="#32CD32" HorizontalOptions="FillAndExpand" HeightRequest="50"/>
+
+    </VerticalStackLayout>
+</ContentPage>

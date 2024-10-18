@@ -4,8 +4,8 @@
              x:Class="Dolar.Views.Base"
              Background="Black"
              Title="Base">
-    <VerticalStackLayout Padding="20" Spacing="20">
 
+    <VerticalStackLayout Padding="20" Spacing="20">
         <!-- Imagen en la parte superior -->
         <Image Source="baseimg.jpg"
                Aspect="AspectFill"
@@ -25,30 +25,43 @@
                TextColor="White"
                HorizontalOptions="Start"/>
 
-        <!-- Picker para el tipo de cambio -->
+        <!-- Picker con datos dinámicos para cambiar tipo de cambio -->
         <Frame Padding="10"
-               BackgroundColor="White"
-               CornerRadius="10"
-               HasShadow="True"
-               HorizontalOptions="FillAndExpand">
+       BackgroundColor="White"
+       CornerRadius="10"
+       HasShadow="True"
+       HorizontalOptions="FillAndExpand" BorderColor="Black" >
             <HorizontalStackLayout Spacing="10">
-                <!-- Imagen de la bandera MX desde la carpeta flags/1x1 -->
-                <Image  Source="1x1/ad.svg"
-                       WidthRequest="40"
-                       HeightRequest="30"/>
-                
-            
-                <VerticalStackLayout>
-                    <Label Text="MX"
-                           FontSize="Medium"
-                           TextColor="Black"/>
-                    <Label Text="MXN Peso"
-                           FontSize="Small"
-                           TextColor="Gray"/>
-                </VerticalStackLayout>
+
+                <!-- Imagen dinámica de la bandera -->
+                <Image Source="{Binding FlagImage}"
+               WidthRequest="40"
+               HeightRequest="40"
+               Aspect="AspectFill"/>
+
+                <!-- Frame con borde dinámico -->
+                <Frame   BorderColor="Black"
+               CornerRadius="5" 
+               Padding="5" 
+               HasShadow="False" 
+               BackgroundColor="Transparent">
+                    <VerticalStackLayout>
+                        <!-- Código del país dinámico -->
+                        <Label Text="{Binding CountryCode}"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                        <!-- Moneda dinámica -->
+                        <Label Text="{Binding CurrencyName}"
+                       FontSize="Small"
+                       TextColor="Gray"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Picker para seleccionar el país/moneda -->
                 <Picker Title="Selecciona un país"
-                        HorizontalOptions="EndAndExpand"
-                        WidthRequest="150">
+                SelectedIndexChanged="OnPickerSelectedIndexChanged"
+                HorizontalOptions="EndAndExpand"
+                WidthRequest="150"  x:Name="picker"  >
                     <!-- Opciones para seleccionar el tipo de cambio -->
                     <Picker.Items>
                         <x:String>MXN Peso</x:String>
@@ -59,12 +72,15 @@
             </HorizontalStackLayout>
         </Frame>
 
+
         <!-- Botón para establecer el tipo de cambio con degradado -->
         <Button Text="Establecer"
                 TextColor="Black"
                 FontAttributes="Bold"
                 CornerRadius="10"
-                HorizontalOptions="FillAndExpand">
+                HorizontalOptions="FillAndExpand"
+                Clicked="OnEstablecerClicked"
+                >
             <Button.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                     <GradientStop Color="#5F9831" Offset="0.0" />
@@ -74,5 +90,5 @@
         </Button>
 
     </VerticalStackLayout>
-   
+
 </ContentPage>

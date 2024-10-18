@@ -41,6 +41,7 @@
 	<ItemGroup>
 		
 		<!-- App Icon -->
+	
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
@@ -56,13 +57,14 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
-	<ItemGroup>
-		<MauiImage Include="Images/1x1/*.svg" />
-	</ItemGroup>
+	
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\baseimg.jpg" />
+	  <None Remove="Resources\Images\eu.png" />
 	  <None Remove="Resources\Images\inicio.png" />
+	  <None Remove="Resources\Images\mx.png" />
+	  <None Remove="Resources\Images\us.png" />
 	  <None Remove="Resources\Splash\1f4b2.png" />
 	</ItemGroup>
 
@@ -74,6 +76,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\Base.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Cambio.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Inicio.xaml">
