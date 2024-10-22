@@ -1,17 +1,22 @@
+using Syncfusion.Maui.Popup;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-
+using Microsoft.Maui.Controls;
+using Syncfusion.Maui.Inputs;
+using Syncfusion.Maui.Core;
 
 namespace Dolar.Views
 {
     public partial class Cambio : ContentPage, INotifyPropertyChanged
     {
+        // Propiedades para enlazar en la vista
         private string countryCode;
         private string currencyName;
         private string flagImage;
-        private decimal exchangeRate;
+        private string nombreEmpresa;
+        private string direccionEmpresa;
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -54,14 +59,27 @@ namespace Dolar.Views
             }
         }
 
-        public decimal ExchangeRate
+        public string NombreEmpresa
         {
-            get => exchangeRate;
+            get => nombreEmpresa;
             set
             {
-                if (exchangeRate != value)
+                if (nombreEmpresa != value)
                 {
-                    exchangeRate = value;
+                    nombreEmpresa = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string DireccionEmpresa
+        {
+            get => direccionEmpresa;
+            set
+            {
+                if (direccionEmpresa != value)
+                {
+                    direccionEmpresa = value;
                     OnPropertyChanged();
                 }
             }
@@ -75,20 +93,51 @@ namespace Dolar.Views
             // Asignar el BindingContext
             BindingContext = this;
 
-            // Valores iniciales
+            // Inicializar las propiedades
             CountryCode = "MX";
             CurrencyName = "MXN Peso";
             FlagImage = "mx.png"; // Ruta de la imagen
-
-            // Cargar datos de la API
-            
         }
 
-  
         // Método para notificar cuando una propiedad cambia
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void ClickToShowPopup_Clicked(object sender, EventArgs e)
+        {
+            // Mostrar el popup de configuración
+            popup.Show();
+        }
+
+        private async void AceptarButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtener los valores ingresados
+                var nombreEmpresa = NombreEmpresa; // Aquí se enlaza a la propiedad
+                // Lógica para obtener los otros campos si están enlazados
+
+                // Mostrar los datos ingresados en un DisplayAlert
+                await DisplayAlert("Datos Ingresados",
+                                   $"Nombre de la empresa: {nombreEmpresa}\n" +
+                                   $"Dirección de la empresa: {DireccionEmpresa}\n",
+                                   "Aceptar");
+
+                // Cerrar el popup después de mostrar el alert
+                popup.Dismiss();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "Aceptar");
+            }
+        }
+
+        private void CancelarButton_Clicked(object sender, EventArgs e)
+        {
+            // Cerrar el popup sin hacer nada
+            popup.Dismiss();
         }
     }
 }

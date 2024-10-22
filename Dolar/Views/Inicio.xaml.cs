@@ -18,7 +18,7 @@ namespace Dolar.Views
         private async void Inicio_Appearing(object sender, EventArgs e)
         {
             // Esperar 5 segundos (5000 milisegundos)
-            await Task.Delay(5000);
+            await Task.Delay(1500);
 
             // Navegar a la siguiente pantalla (Base)
             await  Navigation.PushAsync(new Base());
