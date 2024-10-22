@@ -57,6 +57,23 @@ namespace Dolar.DataAccess
         // ================= CRUD para Monedas ================= //
 
         // Método para Crear (Create) una nueva moneda
+
+
+        //ejemplo por daniel crear
+
+        //var nuevaMoneda = new Monedas
+        //  {
+        //    Nombre = "Dólar",
+        //    img = "US",
+        //    ActivoDivisa = true,
+        //    monedabase = true
+        //   };
+
+        //bool resultado = await context.CreateMoneda(nuevaMoneda);
+
+        //  if (resultado ==true){
+        //         sr creo}
+
         public async Task<bool> CreateMoneda(Monedas nuevaMoneda)
         {
             Monedas.Add(nuevaMoneda);
@@ -98,6 +115,19 @@ namespace Dolar.DataAccess
         // ================= CRUD para TiposCambio ================= //
 
         // Método para Crear (Create) un nuevo tipo de cambio
+
+
+        //var nuevoTipoCambio = new TiposCambio
+        //{
+        //    MonedaId = 1, // ID de la moneda asociada
+        //    TipoCambioCompra = 19.50m,
+        //    TipoCambioVenta = 20.00m
+        //};
+
+        //bool resultado = await context.CreateTipoCambio(nuevoTipoCambio);
+
+
+
         public async Task<bool> CreateTipoCambio(TiposCambio nuevoTipoCambio)
         {
             TiposCambio.Add(nuevoTipoCambio);
@@ -138,6 +168,16 @@ namespace Dolar.DataAccess
         // ================= CRUD para Empresas ================= //
 
         // Método para Crear (Create) una nueva empresa
+
+        //var nuevaEmpresa = new Empresas
+        //{
+        //    Nombre = "Empresa Ejemplo",
+        //    Direccion = "Av. Falsa 123",
+        //    Estado = "CDMX"
+        //};
+
+        //bool resultado = await context.CreateEmpresa(nuevaEmpresa);
+
         public async Task<bool> CreateEmpresa(Empresas nuevaEmpresa)
         {
             Empresas.Add(nuevaEmpresa);
