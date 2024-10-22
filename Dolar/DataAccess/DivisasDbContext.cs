@@ -32,6 +32,9 @@ namespace Dolar.DataAccess
                       .HasForeignKey(e => e.MonedaId)
                       .IsRequired()
                       .OnDelete(DeleteBehavior.Restrict);
+                entity.Property(e => e.TipoCambioVenta).IsRequired();
+                entity.Property(e => e.TipoCambioCompra).IsRequired();
+
             });
 
             modelBuilder.Entity<Monedas>(entity =>
@@ -39,7 +42,7 @@ namespace Dolar.DataAccess
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id).IsRequired().ValueGeneratedOnAdd();
                 entity.Property(e => e.Nombre).HasMaxLength(50);
-                entity.Property(e => e.img).HasMaxLength(2); // Nueva propiedad img
+                entity.Property(e => e.Img).HasMaxLength(2); // Nueva propiedad img
                 entity.Property(e => e.ActivoDivisa).IsRequired();
                 entity.Property(e => e.monedabase).IsRequired(); // Nueva propiedad monedabase
             });
@@ -54,7 +57,19 @@ namespace Dolar.DataAccess
             });
         }
 
-        // ================= CRUD para Monedas ================= //
+        // ================================== CRUD para Monedas ================================== //
+
+        // Método para Leer (Read) todas las monedas
+        public async Task<List<Monedas>> GetAllMonedas()
+        {
+            return await Monedas.ToListAsync();
+        }
+
+        // Método para Leer (Read) una moneda por su Id
+        public async Task<Monedas> GetMonedaById(int id)
+        {
+            return await Monedas.FindAsync(id);
+        }
 
         // Método para Crear (Create) una nueva moneda
 
@@ -101,7 +116,7 @@ namespace Dolar.DataAccess
             if (moneda != null)
             {
                 moneda.Nombre = updatedMoneda.Nombre;
-                moneda.img = updatedMoneda.img;
+                moneda.Img = updatedMoneda.Img;
                 moneda.ActivoDivisa = updatedMoneda.ActivoDivisa;
                 moneda.monedabase = updatedMoneda.monedabase;
 
@@ -112,7 +127,19 @@ namespace Dolar.DataAccess
             return false; // Si no encuentra la moneda
         }
 
-        // ================= CRUD para TiposCambio ================= //
+        // ================================== CRUD para TiposCambio ================================== //
+
+        // Método para Leer (Read) todos los tipos de cambio
+        public async Task<List<TiposCambio>> GetAllTiposCambio()
+        {
+            return await TiposCambio.ToListAsync();
+        }
+
+        // Método para Leer (Read) un tipo de cambio por su Id
+        public async Task<TiposCambio> GetTipoCambioById(int id)
+        {
+            return await TiposCambio.FindAsync(id);
+        }
 
         // Método para Crear (Create) un nuevo tipo de cambio
 
@@ -156,7 +183,6 @@ namespace Dolar.DataAccess
             {
                 tipoCambio.TipoCambioCompra = updatedTipoCambio.TipoCambioCompra;
                 tipoCambio.TipoCambioVenta = updatedTipoCambio.TipoCambioVenta;
-                tipoCambio.MonedaId = updatedTipoCambio.MonedaId;
 
                 TiposCambio.Update(tipoCambio);
                 await SaveChangesAsync();
@@ -166,6 +192,12 @@ namespace Dolar.DataAccess
         }
 
         // ================= CRUD para Empresas ================= //
+
+        // Método para Leer (Read) todas las empresas
+        public async Task<List<Empresas>> GetAllEmpresas()
+        {
+            return await Empresas.ToListAsync();
+        }
 
         // Método para Crear (Create) una nueva empresa
 
