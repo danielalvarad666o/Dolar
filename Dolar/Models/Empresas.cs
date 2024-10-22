@@ -8,8 +8,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dolar.Models
 {
-    public  class Monedas
+    public class Empresas
     {
+
         [Key]
         public int Id { get; set; }
 
@@ -17,15 +18,17 @@ namespace Dolar.Models
 
         public string? Nombre { get; set; } //mexico
 
-        [MinLength(2)]
-        [MaxLength(2)]
-        public string? img { get; set; } //mx //USD //
 
-        public bool ActivoDivisa { get; set; }
+        [MaxLength(50)]
 
-        public bool monedabase { get; set; }
+        public string? Direccion { get; set; } //mexico
+
+
+        [MaxLength(50)]
+
+        public string? Estado { get; set; } //mexico
+
 
 
     }
 }
-

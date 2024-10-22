@@ -10,7 +10,7 @@ namespace Dolar
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            MainPage =  new  NavigationPage(new Inicio());
+            MainPage =  new  NavigationPage(new ListaDivisas());
             
 
         }

@@ -32,7 +32,7 @@
                 </Grid>
 
                 <CollectionView x:Name="DivisasCollectionView"
-                                ItemsSource="{Binding MonedasList}"
+                                ItemsSource="{Binding MonedasList}" 
                                 Margin="0,10,0,20">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>

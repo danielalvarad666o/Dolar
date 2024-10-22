@@ -42,6 +42,10 @@
 		<!-- Paquetes de NuGet -->
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
