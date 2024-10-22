@@ -39,9 +39,22 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<!-- Paquetes de NuGet -->
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.10" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		
-		<!-- App Icon -->
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.92" />
+	</ItemGroup>
 	
+
+	<ItemGroup>
+
+		<!-- App Icon -->
+
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
@@ -57,15 +70,15 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
-	
+
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\baseimg.jpg" />
-	  <None Remove="Resources\Images\eu.png" />
-	  <None Remove="Resources\Images\inicio.png" />
-	  <None Remove="Resources\Images\mx.png" />
-	  <None Remove="Resources\Images\us.png" />
-	  <None Remove="Resources\Splash\1f4b2.png" />
+		<None Remove="Resources\Images\baseimg.jpg" />
+		<None Remove="Resources\Images\eu.png" />
+		<None Remove="Resources\Images\inicio.png" />
+		<None Remove="Resources\Images\mx.png" />
+		<None Remove="Resources\Images\us.png" />
+		<None Remove="Resources\Splash\1f4b2.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -75,15 +88,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\Base.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Cambio.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Inicio.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<MauiXaml Update="ViewModels\NewPage1.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Base.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Cambio.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Inicio.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
 
 </Project>
