@@ -8,7 +8,7 @@ namespace Dolar
 {
     public partial class App : Application
     {
-        public App()
+        public App(Inicio inicio)
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
@@ -36,8 +36,8 @@ namespace Dolar
 
 
 
-            MainPage =  new  NavigationPage(new Inicio());
-            
+            MainPage =  inicio;
+
 
         }
     }

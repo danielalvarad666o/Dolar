@@ -19,7 +19,7 @@ namespace Dolar.Models
 
         [MinLength(2)]
         [MaxLength(2)]
-        public string? img { get; set; } //mx //USD //
+        public string? Img { get; set; } //mx //USD //
 
         public bool ActivoDivisa { get; set; }
 
