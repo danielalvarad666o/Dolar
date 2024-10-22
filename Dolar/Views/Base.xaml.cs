@@ -60,7 +60,7 @@ namespace Dolar.Views
             // Valores iniciales
             CountryCode = "MX";
             CurrencyName = "MXN Peso";
-            FlagImage = "mx.png"; // Ruta a la imagen de la bandera
+            FlagImage = "us.png"; // Ruta a la imagen de la bandera
             picker.SelectedIndex = 0;
 
         }

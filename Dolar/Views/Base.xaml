@@ -35,8 +35,8 @@
 
                 <!-- Imagen dinámica de la bandera -->
                 <Image Source="{Binding FlagImage}"
-               WidthRequest="40"
-               HeightRequest="40"
+               WidthRequest="87"
+               HeightRequest="50"
                Aspect="AspectFill"/>
 
                 <!-- Frame con borde dinámico -->
