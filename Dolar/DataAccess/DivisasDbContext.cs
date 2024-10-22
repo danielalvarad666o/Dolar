@@ -19,6 +19,7 @@ namespace Dolar.DataAccess
             string dbPath = "Dolar.db";  // Ajusta esta ruta según la ubicación donde desees almacenar tu base de datos.
             optionsBuilder.UseSqlite($"Filename={dbPath}");
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TiposCambio>(entity =>
@@ -53,7 +54,126 @@ namespace Dolar.DataAccess
             });
         }
 
+        // ================= CRUD para Monedas ================= //
 
+        // Método para Crear (Create) una nueva moneda
+        public async Task<bool> CreateMoneda(Monedas nuevaMoneda)
+        {
+            Monedas.Add(nuevaMoneda);
+            await SaveChangesAsync();
+            return true; // Si se agrega correctamente
+        }
 
+        // Método para Eliminar (Delete) una moneda
+        public async Task<bool> DeleteMoneda(int id)
+        {
+            var moneda = await Monedas.FindAsync(id);
+            if (moneda != null)
+            {
+                Monedas.Remove(moneda);
+                await SaveChangesAsync();
+                return true;
+            }
+            return false; // Si no encuentra la moneda
+        }
+
+        // Método para Actualizar (Update) una moneda
+        public async Task<bool> UpdateMoneda(int id, Monedas updatedMoneda)
+        {
+            var moneda = await Monedas.FindAsync(id);
+            if (moneda != null)
+            {
+                moneda.Nombre = updatedMoneda.Nombre;
+                moneda.img = updatedMoneda.img;
+                moneda.ActivoDivisa = updatedMoneda.ActivoDivisa;
+                moneda.monedabase = updatedMoneda.monedabase;
+
+                Monedas.Update(moneda);
+                await SaveChangesAsync();
+                return true;
+            }
+            return false; // Si no encuentra la moneda
+        }
+
+        // ================= CRUD para TiposCambio ================= //
+
+        // Método para Crear (Create) un nuevo tipo de cambio
+        public async Task<bool> CreateTipoCambio(TiposCambio nuevoTipoCambio)
+        {
+            TiposCambio.Add(nuevoTipoCambio);
+            await SaveChangesAsync();
+            return true; // Si se agrega correctamente
+        }
+
+        // Método para Eliminar (Delete) un tipo de cambio
+        public async Task<bool> DeleteTipoCambio(int id)
+        {
+            var tipoCambio = await TiposCambio.FindAsync(id);
+            if (tipoCambio != null)
+            {
+                TiposCambio.Remove(tipoCambio);
+                await SaveChangesAsync();
+                return true;
+            }
+            return false; // Si no encuentra el tipo de cambio
+        }
+
+        // Método para Actualizar (Update) un tipo de cambio
+        public async Task<bool> UpdateTipoCambio(int id, TiposCambio updatedTipoCambio)
+        {
+            var tipoCambio = await TiposCambio.FindAsync(id);
+            if (tipoCambio != null)
+            {
+                tipoCambio.TipoCambioCompra = updatedTipoCambio.TipoCambioCompra;
+                tipoCambio.TipoCambioVenta = updatedTipoCambio.TipoCambioVenta;
+                tipoCambio.MonedaId = updatedTipoCambio.MonedaId;
+
+                TiposCambio.Update(tipoCambio);
+                await SaveChangesAsync();
+                return true;
+            }
+            return false; // Si no encuentra el tipo de cambio
+        }
+
+        // ================= CRUD para Empresas ================= //
+
+        // Método para Crear (Create) una nueva empresa
+        public async Task<bool> CreateEmpresa(Empresas nuevaEmpresa)
+        {
+            Empresas.Add(nuevaEmpresa);
+            await SaveChangesAsync();
+            return true; // Si se agrega correctamente
+        }
+
+        // Método para Eliminar (Delete) una empresa
+        public async Task<bool> DeleteEmpresa(int id)
+        {
+            var empresa = await Empresas.FindAsync(id);
+            if (empresa != null)
+            {
+                Empresas.Remove(empresa);
+                await SaveChangesAsync();
+                return true;
+            }
+            return false; // Si no encuentra la empresa
+        }
+
+        // Método para Actualizar (Update) una empresa
+        public async Task<bool> UpdateEmpresa(int id, Empresas updatedEmpresa)
+        {
+            var empresa = await Empresas.FindAsync(id);
+            if (empresa != null)
+            {
+                empresa.Nombre = updatedEmpresa.Nombre;
+                empresa.Direccion = updatedEmpresa.Direccion;
+                empresa.Estado = updatedEmpresa.Estado;
+
+                Empresas.Update(empresa);
+                await SaveChangesAsync();
+                return true;
+            }
+            return false; // Si no encuentra la empresa
+        }
     }
 }
+
