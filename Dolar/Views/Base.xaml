@@ -13,14 +13,14 @@
                HorizontalOptions="FillAndExpand"/>
 
         <!-- Título del tipo de cambio -->
-        <Label Text="Tipo de cambio base"
+        <Label Text="Bienvenido a Casa de Cambio"
                FontSize="Large"
                FontAttributes="Bold"
                TextColor="White"
                HorizontalOptions="Start"/>
 
         <!-- Subtítulo del Picker -->
-        <Label Text="Tipo de cambio"
+        <Label Text="Tipo de cambio base"
                FontSize="Medium"
                TextColor="White"
                HorizontalOptions="Start"/>
@@ -34,7 +34,7 @@
             <HorizontalStackLayout Spacing="10">
 
                 <!-- Imagen dinámica de la bandera -->
-                <Image Source="{Binding FlagImage}"
+                <Image  Source="{Binding FlagImage}"
                WidthRequest="87"
                HeightRequest="50"
                Aspect="AspectFill"/>
@@ -58,17 +58,12 @@
                 </Frame>
 
                 <!-- Picker para seleccionar el país/moneda -->
-                <Picker Title="Selecciona un país"
-                SelectedIndexChanged="OnPickerSelectedIndexChanged"
-                HorizontalOptions="EndAndExpand"
-                WidthRequest="150"  x:Name="picker"  >
-                    <!-- Opciones para seleccionar el tipo de cambio -->
-                    <Picker.Items>
-                        <x:String>MXN Peso</x:String>
-                        <x:String>USD Dólar</x:String>
-                        <x:String>EUR Euro</x:String>
-                    </Picker.Items>
-                </Picker>
+
+                <Label Text="Tu  moneda base "
+          FontSize="Medium"
+          TextColor="Black"
+          HorizontalOptions="Start"/>
+
             </HorizontalStackLayout>
         </Frame>
 

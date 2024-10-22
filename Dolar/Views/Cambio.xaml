@@ -5,52 +5,71 @@
              Title="Cambio">
     <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="Black">
 
-        <!-- Primer tipo de cambio (hereda de Base) -->
+        <!-- Tipo de cambio Peso Mexicano -->
         <Frame Padding="15" BackgroundColor="White" CornerRadius="15" HasShadow="True">
             <HorizontalStackLayout Spacing="10">
-                <!-- Imagen de la bandera -->
-                <Image Source="{Binding FlagImage}" WidthRequest="40" HeightRequest="40" Aspect="AspectFill"/>
+                <!-- Imagen de la bandera de México -->
+                <Image Source="{Binding FlagImage}" WidthRequest="87"
+                       HeightRequest="50" Aspect="AspectFill"/>
 
-                <!-- Información de tipo de cambio -->
+                <!-- Información de tipo de cambio (MXN) -->
                 <VerticalStackLayout>
                     <Label Text="{Binding CountryCode}" FontSize="Large" TextColor="Black"/>
                     <Label Text="{Binding CurrencyName}" FontSize="Small" TextColor="Gray"/>
                 </VerticalStackLayout>
 
-                <!-- Precio y equivalencia -->
+                <!-- Precio y equivalencia del Peso Mexicano -->
                 <VerticalStackLayout HorizontalOptions="EndAndExpand">
                     <Label Text="1 MXN = " FontSize="Medium" TextColor="Black"/>
-                    <Label Text="0.050 USD" FontSize="Small" TextColor="Gray"/>
+                    <!-- Este valor será dinámico -->
+                    <Label Text="{Binding TipoCambioMXN}" FontSize="Small" TextColor="Black"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
         </Frame>
 
-        <!-- Segundo tipo de cambio (USD) -->
+        <!-- Tipo de cambio USD -->
         <Frame Padding="15" BackgroundColor="White" CornerRadius="15" HasShadow="True">
             <HorizontalStackLayout Spacing="10">
-                <!-- Imagen de la bandera -->
-                <Image Source="us.png" WidthRequest="40" HeightRequest="40" Aspect="AspectFill"/>
+                <!-- Imagen de la bandera (dinámica) -->
+                <Image Source="{Binding FlagImageC}" WidthRequest="87" HeightRequest="50" Aspect="AspectFill"/>
 
-                <!-- Información de tipo de cambio -->
+                <!-- Información de tipo de cambio (dinámica) -->
                 <VerticalStackLayout>
-                    <Label Text="USD" FontSize="Large" TextColor="Black"/>
-                    <Label Text="USD Dólar" FontSize="Small" TextColor="Gray"/>
+                    <Label Text="{Binding CountryCodeC}" FontSize="Large" TextColor="Black"/>
+                    <Label Text="{Binding CurrencyNameC}" FontSize="Small" TextColor="Gray"/>
                 </VerticalStackLayout>
 
-                <!-- Precio y equivalencia -->
+                <!-- Precio y equivalencia (dinámica) -->
                 <VerticalStackLayout HorizontalOptions="EndAndExpand">
-                    <Label Text="1 USD = " FontSize="Medium" TextColor="Black"/>
-                    <Label Text="20.09 MXN" FontSize="Small" TextColor="Gray"/>
+                    <Label Text="{Binding CountryCodeC, StringFormat='1 {0}'}" FontSize="Medium" TextColor="Black"/>
+                    <!-- Aquí es donde debes asegurarte que esté el x:Name correcto -->
+                    <Label x:Name="TipoCambioUSDLabel" FontSize="Small" TextColor="black"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
         </Frame>
+
+
+        <!-- Entrada de monto -->
+        <Entry x:Name="MontoEntry" Placeholder="Ingrese el monto" Keyboard="Numeric" BackgroundColor="White"
+               TextColor="Black" HorizontalOptions="FillAndExpand" />
+
+        <!-- Resultado dinámico al calcular -->
+        <Frame BorderColor="White" CornerRadius="10" HasShadow="True" IsVisible="{Binding IsResultadoVisible}" Padding="10">
+            <StackLayout Spacing="10">
+                <Label x:Name="OperacionLabel" Text="Operación: " FontSize="Medium" TextColor="Black"/>
+                <Label x:Name="ResultadoLabel" Text="Valor final: " FontSize="Medium" TextColor="Black"/>
+            </StackLayout>
+        </Frame>
+
 
         <!-- Botones de Comprar y Vender -->
         <Button Text="Comprar" TextColor="White" FontAttributes="Bold" CornerRadius="10"
-                BackgroundColor="#FF4500" HorizontalOptions="FillAndExpand" HeightRequest="50"/>
+                BackgroundColor="#FF4500" HorizontalOptions="FillAndExpand" HeightRequest="50"
+                Clicked="OnComprarClicked"/>
 
         <Button Text="Vender" TextColor="White" FontAttributes="Bold" CornerRadius="10"
-                BackgroundColor="#32CD32" HorizontalOptions="FillAndExpand" HeightRequest="50"/>
+                BackgroundColor="#32CD32" HorizontalOptions="FillAndExpand" HeightRequest="50"
+                Clicked="OnVenderClicked"/>
 
     </VerticalStackLayout>
 </ContentPage>

@@ -10,6 +10,7 @@ namespace Dolar.DataAccess
 {
     public class DolarDbContext : DbContext
     {
+
         public DbSet<TiposCambio> TiposCambio { get; set; }
         public DbSet<Monedas> Monedas { get; set; }
         public DbSet<Empresas> Empresas { get; set; }
@@ -45,6 +46,7 @@ namespace Dolar.DataAccess
                 entity.Property(e => e.Img).HasMaxLength(2); // Nueva propiedad img
                 entity.Property(e => e.ActivoDivisa).IsRequired();
                 entity.Property(e => e.monedabase).IsRequired(); // Nueva propiedad monedabase
+              
             });
 
             modelBuilder.Entity<Empresas>(entity =>

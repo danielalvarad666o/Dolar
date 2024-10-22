@@ -1,4 +1,7 @@
 using System.ComponentModel;
+using Dolar.DataAccess;
+using Dolar.Models;
+using System.Linq;
 
 namespace Dolar.Views
 {
@@ -52,48 +55,40 @@ namespace Dolar.Views
         public Base()
         {
             InitializeComponent();
-            // Asignar el BindingContext a la página
             NavigationPage.SetHasNavigationBar(this, false);
             this.Padding = new Thickness(0);
             BindingContext = this;
 
-            // Valores iniciales
-            CountryCode = "MX";
-            CurrencyName = "MXN Peso";
-            FlagImage = "us.png"; // Ruta a la imagen de la bandera
-            picker.SelectedIndex = 0;
+            // Usar el contexto para obtener la moneda con monedabase = true
+            using (var context = new DolarDbContext())
+            {
+                var monedaBase = context.Monedas.FirstOrDefault(m => m.monedabase);
+                
+                if (monedaBase != null)
+                {
+                    var img = $"{monedaBase.Img}.png";
 
+                  
+                    // Asignar valores a las propiedades desde la moneda base
+                    CountryCode = $"{monedaBase.Img}";
+                    CurrencyName = $"{monedaBase.Nombre}";
+                    FlagImage = img;
+                }
+                else
+                {
+                    // Si no hay moneda base, asignar valores predeterminados
+                    CountryCode = "MX";
+                    CurrencyName = "MXN Peso";
+                    FlagImage = "banderas/mx.png";
+                }
+            }
+
+            // Inicializar el Picker si lo tienes en la interfaz
+            
         }
 
         // Método que maneja el cambio en el Picker
-        private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
-        {
-            var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
-
-            if (selectedIndex != -1)
-            {
-                switch (picker.Items[selectedIndex])
-                {
-                    case "MXN Peso":
-                        CountryCode = "MX";
-                        CurrencyName = "MXN Peso";
-                        FlagImage = "mx.png";
-                        break;
-                    case "USD Dólar":
-                        CountryCode = "US";
-                        CurrencyName = "USD Dólar";
-                        FlagImage = "us.png";
-                        break;
-                    case "EUR Euro":
-                        CountryCode = "EU";
-                        CurrencyName = "EUR Euro";
-                        FlagImage = "eu.png";
-                        break;
-                }
-            }
-        }
-
+     
         // Notifica cuando una propiedad cambia
         protected void OnPropertyChanged(string propertyName)
         {
@@ -103,8 +98,7 @@ namespace Dolar.Views
         private async void OnEstablecerClicked(object sender, EventArgs e)
         {
             // Navega a la vista "Cambio"
-            await Navigation.PushAsync(new Cambio());
+            await Navigation.PushAsync(new Cambio(3));
         }
     }
 }
-
