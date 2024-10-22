@@ -88,9 +88,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<MauiXaml Update="ViewModels\NewPage1.xaml">
-		  <Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
 		<MauiXaml Update="Views\Base.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
@@ -99,6 +96,9 @@
 		</MauiXaml>
 		<MauiXaml Update="Views\Inicio.xaml">
 			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\ListaDivisas.xaml">
+		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 	</ItemGroup>
 
