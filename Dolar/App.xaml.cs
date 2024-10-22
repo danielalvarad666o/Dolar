@@ -1,7 +1,7 @@
 ﻿
 
 using Dolar.Views;
-
+using Dolar.DataAccess;
 namespace Dolar
 {
     public partial class App : Application
@@ -10,7 +10,12 @@ namespace Dolar
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            MainPage =  new  NavigationPage(new ListaDivisas());
+            using (var context = new DolarDbContext())
+            {
+                context.Database.EnsureCreated();  // Esto asegura que la base de datos esté creada
+            }
+
+            MainPage =  new  NavigationPage(new Inicio());
             
 
         }
