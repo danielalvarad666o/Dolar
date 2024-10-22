@@ -18,6 +18,9 @@ namespace Dolar.Models
         [ForeignKey("MonedaId")]
         public Monedas? Moneda { get; set; }
 
+
+
+
         [Column(TypeName = "decimal(10, 2)")]
         public decimal TipoCambioCompra { get; set; }
 
