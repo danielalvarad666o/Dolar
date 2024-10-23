@@ -29,6 +29,9 @@
 
         <!-- Tipo de cambio USD -->
         <Frame Padding="15" BackgroundColor="White" CornerRadius="15" HasShadow="True">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnFrameTapped"/>
+            </Frame.GestureRecognizers>
             <HorizontalStackLayout Spacing="10">
                 <!-- Imagen de la bandera (dinámica) -->
                 <Image Source="{Binding FlagImageC}" WidthRequest="87" HeightRequest="50" Aspect="AspectFill"/>
@@ -54,7 +57,7 @@
                TextColor="Black" HorizontalOptions="FillAndExpand" />
 
         <!-- Resultado dinámico al calcular -->
-        <Frame BorderColor="White" CornerRadius="10" HasShadow="True" IsVisible="{Binding IsResultadoVisible}" Padding="10">
+        <Frame BorderColor="White" CornerRadius="10" BackgroundColor="White" HasShadow="True" IsVisible="{Binding IsResultadoVisible}" Padding="10">
             <StackLayout Spacing="10">
                 <Label x:Name="OperacionLabel" Text="Operación: " FontSize="Medium" TextColor="Black"/>
                 <Label x:Name="ResultadoLabel" Text="Valor final: " FontSize="Medium" TextColor="Black"/>

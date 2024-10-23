@@ -433,5 +433,11 @@ namespace Dolar.Views
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private async void OnFrameTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SeleccionarMoneda());
+        }
+
     }
 }
