@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
+             xmlns:sfInputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:sfButtons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              x:Class="Dolar.Views.Cambio"
              Title="Cambio">
     <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="Black">
+        <!-- Imagen de configuración como botón -->
+        <ImageButton Source="settings.png" 
+                     HorizontalOptions="End"
+                     WidthRequest="40" 
+                     HeightRequest="40" 
+                     Clicked="ClickToShowPopup_Clicked"
+                     Background="Transparent"/>
 
         <!-- Tipo de cambio Peso Mexicano -->
         <Frame Padding="15" BackgroundColor="White" CornerRadius="15" HasShadow="True">
@@ -66,13 +76,115 @@
 
 
         <!-- Botones de Comprar y Vender -->
-        <Button Text="Comprar" TextColor="White" FontAttributes="Bold" CornerRadius="10"
-                BackgroundColor="#FF4500" HorizontalOptions="FillAndExpand" HeightRequest="50"
-                Clicked="OnComprarClicked"/>
+        <StackLayout VerticalOptions="CenterAndExpand" Spacing="10" HorizontalOptions="FillAndExpand">
+            <sfButtons:SfButton Text="Comprar" 
+                         CornerRadius="10" 
+                         HorizontalOptions="FillAndExpand"
+                         TextColor="Black"
+                         FontAttributes="Bold"
+                         HeightRequest="50"
+                         Clicked="OnComprarClicked">
+                <sfButtons:SfButton.Background>
+                    <LinearGradientBrush>
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Color="#E32525" Offset="0"/>
+                            <GradientStop Color="#D48421" Offset="1"/>
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </sfButtons:SfButton.Background>
+            </sfButtons:SfButton>
 
-        <Button Text="Vender" TextColor="White" FontAttributes="Bold" CornerRadius="10"
-                BackgroundColor="#32CD32" HorizontalOptions="FillAndExpand" HeightRequest="50"
-                Clicked="OnVenderClicked"/>
+            <sfButtons:SfButton Text="Vender" 
+                         CornerRadius="10" 
+                         HorizontalOptions="FillAndExpand" 
+                         HeightRequest="50"
+                         TextColor="Black"
+                         FontAttributes="Bold"
+                         Clicked="OnVenderClicked">
+                <sfButtons:SfButton.Background>
+                    <LinearGradientBrush>
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Color="#5F9831" Offset="0"/>
+                            <GradientStop Color="#B9CA20" Offset="1"/>
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </sfButtons:SfButton.Background>
+            </sfButtons:SfButton>
+        </StackLayout>
+
+
+        <!-- Popup que se mostrará al hacer clic en la imagen de configuración -->
+        <sfPopup:SfPopup x:Name="popup"
+               ShowHeader="False"         
+               OverlayMode="Blur"
+               AutoSizeMode="Height">
+            <!-- Se omite PopupBackground y se aplica el degradado dentro del contenido -->
+            <sfPopup:SfPopup.ContentTemplate>
+                <DataTemplate>
+                    <!-- Frame con degradado aplicado -->
+                    <Frame Padding="0" HasShadow="False" CornerRadius="10">
+                        <Frame.Background>
+                            <LinearGradientBrush>
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStop Color="#5F9831" Offset="0"/>
+                                    <GradientStop Color="#B9CA20" Offset="1"/>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Frame.Background>
+
+                        <!-- Contenido del Popup -->
+                        <StackLayout Padding="15" Spacing="15">
+                            <Label Text="Configuraciones" FontSize="Medium" TextColor="Black"/>
+                            <!-- Campos de entrada -->
+                            <sfInputLayout:SfTextInputLayout x:Name="NombreEmpresaInput" Hint="Nombre de la empresa" ContainerType="Outlined" OutlineCornerRadius="8">
+                                <Entry x:Name="entryNombreEmpresa" TextColor="Black"/>
+                            </sfInputLayout:SfTextInputLayout>
+                            <sfInputLayout:SfTextInputLayout x:Name="DireccionEmpresaInput" Hint="Dirección de la empresa" ContainerType="Outlined" OutlineCornerRadius="8">
+                                <Entry x:Name="entryDireccionEmpresa" TextColor="Black"/>
+                            </sfInputLayout:SfTextInputLayout>
+                            <sfInputLayout:SfTextInputLayout x:Name="CiudadInput" Hint="Ciudad" ContainerType="Outlined" OutlineCornerRadius="8">
+                                <Entry x:Name="entryCiudad" TextColor="Black"/>
+                            </sfInputLayout:SfTextInputLayout>
+                            <sfInputLayout:SfTextInputLayout x:Name="EstadoInput" Hint="Estado" ContainerType="Outlined" OutlineCornerRadius="8">
+                                <Entry x:Name="entryEstado" TextColor="Black"/>
+                            </sfInputLayout:SfTextInputLayout>
+
+
+                            <!-- Botones de Aceptar y Cancelar (sin degradado) -->
+                            <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="10">
+                                <!-- Botón Aceptar (sin degradado) -->
+                                <sfButtons:SfButton Text="Aceptar" 
+                                     CornerRadius="10" 
+                                     HorizontalOptions="FillAndExpand"
+                                     TextColor="Black"
+                                     Background="Transparent" 
+                                     FontAttributes="Bold"
+                                     HeightRequest="50"
+                                     Clicked="AceptarButton_Clicked"/>
+                                <!-- Evento para Aceptar -->
+
+                                <!-- Botón Cancelar (sin degradado) -->
+                                <sfButtons:SfButton Text="Cancelar" 
+                                     CornerRadius="10" 
+                                     HorizontalOptions="FillAndExpand"
+                                     TextColor="Black"
+                                     Background="Transparent"
+                                     FontAttributes="Bold"
+                                     HeightRequest="50"
+                                     Clicked="CancelarButton_Clicked"/>
+                                <!-- Evento para Cancelar -->
+                            </HorizontalStackLayout>
+                        </StackLayout>
+
+                    </Frame>
+                </DataTemplate>
+            </sfPopup:SfPopup.ContentTemplate>
+        </sfPopup:SfPopup>
 
     </VerticalStackLayout>
 </ContentPage>
+
+    
+    
+    
+    

@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Dolar.DataAccess;
 using Microsoft.Maui.Controls;
 using System.Linq;
+using Syncfusion.Maui.Popup;
+using Syncfusion.Maui.Inputs;
+using Syncfusion.Maui.Core;
 
 namespace Dolar.Views
 {
@@ -439,5 +442,23 @@ namespace Dolar.Views
             await Navigation.PushAsync(new SeleccionarMoneda());
         }
 
+        private void ClickToShowPopup_Clicked(object sender, EventArgs e)
+        {
+            // Mostrar el popup de configuración
+            popup.Show();
+        }
+
+        private async void AceptarButton_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Configuración", "Configuración guardada.", "OK");
+        }
+
+        private void CancelarButton_Clicked(object sender, EventArgs e)
+        {
+            // Cerrar el popup sin hacer nada
+            popup.Dismiss();
+        }
     }
+
 }
+
