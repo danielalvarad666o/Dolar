@@ -98,7 +98,7 @@ namespace Dolar.Views
         private async void OnEstablecerClicked(object sender, EventArgs e)
         {
             // Navega a la vista "Cambio"
-            await Navigation.PushAsync(new Cambio(3));
+            await Navigation.PushAsync(new Cambio(5));
         }
     }
 }

@@ -181,17 +181,8 @@ namespace Dolar.Views
         }
 
         public decimal ExchangeRate
-        {
-            get => exchangeRate;
-            set
-            {
-                if (exchangeRate != value)
-                {
-                    exchangeRate = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        {   get => exchangeRate;   set{ if (exchangeRate != value) { exchangeRate = value; OnPropertyChanged();} }
+       }
         private string tipoCambioMXN;
 
         public string TipoCambioMXN
@@ -228,7 +219,7 @@ namespace Dolar.Views
                 if (id > 0)
                 {
                     var monedaCambio = context.Monedas.FirstOrDefault(m => m.Id == id);
-
+               
                     if (monedaCambio != null)
                     {
                         // Asignar valores para la moneda seleccionada
@@ -252,7 +243,7 @@ namespace Dolar.Views
                     {
                         // Si no se encuentra la moneda con el id proporcionado, buscar la moneda con Img == "us"
                         var monedaBaseC = context.Monedas.FirstOrDefault(m => m.Img == "us");
-                        DisplayAlert("Error", $"{monedaBaseC}", "OK");
+                       
 
                         if (monedaBaseC != null)
                         {
