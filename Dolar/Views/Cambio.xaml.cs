@@ -271,7 +271,7 @@ namespace Dolar.Views
                 else
                 {
                     var monedaBaseC = context.Monedas.FirstOrDefault(m => m.Img == "us");
-                    DisplayAlert("Error", $"{monedaBaseC}", "OK");
+                    
 
                     if (monedaBaseC != null)
                     {
