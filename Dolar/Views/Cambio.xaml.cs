@@ -8,6 +8,7 @@ using System.Linq;
 using Syncfusion.Maui.Popup;
 using Syncfusion.Maui.Inputs;
 using Syncfusion.Maui.Core;
+using Dolar.Models;
 
 namespace Dolar.Views
 {
@@ -30,7 +31,55 @@ namespace Dolar.Views
         private string currencyNameC;
         private string flagImageC;
 
+        private string _nombreEmpresa;
+        private string _direccionEmpresa;
+        private string _ciudad;
+        private string _estado;
+
+
         public event PropertyChangedEventHandler PropertyChanged;
+
+
+
+        public string NombreEmpresa
+        {
+            get => _nombreEmpresa;
+            set
+            {
+                _nombreEmpresa = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string DireccionEmpresa
+        {
+            get => _direccionEmpresa;
+            set
+            {
+                _direccionEmpresa = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Ciudad
+        {
+            get => _ciudad;
+            set
+            {
+                _ciudad = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Estado
+        {
+            get => _estado;
+            set
+            {
+                _estado = value;
+                OnPropertyChanged();
+            }
+        }
 
         public string TipoCambioInfo
         {
@@ -440,11 +489,49 @@ namespace Dolar.Views
             // Mostrar el popup de configuración
             popup.Show();
         }
+        
+       
 
         private async void AceptarButton_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("Configuración", "Configuración guardada.", "OK");
-        }
+{
+            
+
+            // Obtener los valores del ViewModel
+            string nombreEmpresa = NombreEmpresa;
+            string direccionEmpresa = DireccionEmpresa;
+            
+            string estado = Estado;
+
+
+            // Validar que los campos no estén vacíos (opcional)
+            if ( string.IsNullOrEmpty(nombreEmpresa) || string.IsNullOrEmpty(direccionEmpresa) ||  string.IsNullOrEmpty(estado))
+    {
+        await DisplayAlert("Error", "Por favor completa todos los campos.", "OK");
+        return;
+    }
+
+    // Crear una nueva instancia del modelo Empresas
+    var nuevaEmpresa = new Empresas
+    {
+        Nombre = nombreEmpresa,
+        Direccion = direccionEmpresa,
+        Estado = estado // Puedes agregar Ciudad si lo tienes en tu modelo
+    };
+
+    // Guardar en la base de datos
+    using (var context = new DolarDbContext())
+    {
+        context.Empresas.Add(nuevaEmpresa);
+        await context.SaveChangesAsync();
+    }
+
+            // Mostrar un mensaje de confirmación
+            await DisplayAlert("Configuración", $"Configuración guardada.\nNombre: {nuevaEmpresa.Nombre}\nDirección: {nuevaEmpresa.Direccion}\nEstado: {nuevaEmpresa.Estado}", "OK");
+
+
+            // Cerrar el popup
+            popup.IsOpen = false;
+}
 
         private void CancelarButton_Clicked(object sender, EventArgs e)
         {

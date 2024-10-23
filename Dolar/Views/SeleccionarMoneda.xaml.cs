@@ -33,12 +33,17 @@ namespace Dolar.Views
                 var monedasList = await context.GetAllMonedas();
                 foreach (var moneda in monedasList)
                 {
-                    // Asignar la ruta de la imagen
-                    moneda.Img = $"{moneda.Img}.png"; // Ruta relativa a las imágenes
-                    Monedas.Add(moneda);
+                    // Verificar si la propiedad monedabase es diferente de true
+                    if (!moneda.monedabase)
+                    {
+                        // Asignar la ruta de la imagen
+                        moneda.Img = $"{moneda.Img}.png"; // Ruta relativa a las imágenes
+                        Monedas.Add(moneda);
+                    }
                 }
             }
         }
+
 
         // Manejador de eventos para el cambio de selección en el CollectionView
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)

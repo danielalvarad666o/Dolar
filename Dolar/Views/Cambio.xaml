@@ -115,9 +115,9 @@
 
         <!-- Popup que se mostrará al hacer clic en la imagen de configuración -->
         <sfPopup:SfPopup x:Name="popup"
-               ShowHeader="False"         
-               OverlayMode="Blur"
-               AutoSizeMode="Height">
+                 ShowHeader="False"         
+                 OverlayMode="Blur"
+                 AutoSizeMode="Height">
             <!-- Se omite PopupBackground y se aplica el degradado dentro del contenido -->
             <sfPopup:SfPopup.ContentTemplate>
                 <DataTemplate>
@@ -135,43 +135,40 @@
                         <!-- Contenido del Popup -->
                         <StackLayout Padding="15" Spacing="15">
                             <Label Text="Configuraciones" FontSize="Medium" TextColor="Black"/>
-                            <!-- Campos de entrada -->
+
                             <sfInputLayout:SfTextInputLayout x:Name="NombreEmpresaInput" Hint="Nombre de la empresa" ContainerType="Outlined" OutlineCornerRadius="8">
-                                <Entry x:Name="entryNombreEmpresa" TextColor="Black"/>
+                                <Entry Text="{Binding NombreEmpresa}" TextColor="Black"/>
                             </sfInputLayout:SfTextInputLayout>
-                            <sfInputLayout:SfTextInputLayout x:Name="DireccionEmpresaInput" Hint="Dirección de la empresa" ContainerType="Outlined" OutlineCornerRadius="8">
-                                <Entry x:Name="entryDireccionEmpresa" TextColor="Black"/>
-                            </sfInputLayout:SfTextInputLayout>
+                           
                             <sfInputLayout:SfTextInputLayout x:Name="CiudadInput" Hint="Ciudad" ContainerType="Outlined" OutlineCornerRadius="8">
-                                <Entry x:Name="entryCiudad" TextColor="Black"/>
+                                <Entry Text="{Binding Ciudad}" TextColor="Black"/>
                             </sfInputLayout:SfTextInputLayout>
                             <sfInputLayout:SfTextInputLayout x:Name="EstadoInput" Hint="Estado" ContainerType="Outlined" OutlineCornerRadius="8">
-                                <Entry x:Name="entryEstado" TextColor="Black"/>
+                                <Entry Text="{Binding Estado}" TextColor="Black"/>
                             </sfInputLayout:SfTextInputLayout>
-
 
                             <!-- Botones de Aceptar y Cancelar (sin degradado) -->
                             <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                                 <!-- Botón Aceptar (sin degradado) -->
                                 <sfButtons:SfButton Text="Aceptar" 
-                                     CornerRadius="10" 
-                                     HorizontalOptions="FillAndExpand"
-                                     TextColor="Black"
-                                     Background="Transparent" 
-                                     FontAttributes="Bold"
-                                     HeightRequest="50"
-                                     Clicked="AceptarButton_Clicked"/>
+                             CornerRadius="10" 
+                             HorizontalOptions="FillAndExpand"
+                             TextColor="Black"
+                             Background="Transparent" 
+                             FontAttributes="Bold"
+                             HeightRequest="50"
+                             Clicked="AceptarButton_Clicked"/>
                                 <!-- Evento para Aceptar -->
 
                                 <!-- Botón Cancelar (sin degradado) -->
                                 <sfButtons:SfButton Text="Cancelar" 
-                                     CornerRadius="10" 
-                                     HorizontalOptions="FillAndExpand"
-                                     TextColor="Black"
-                                     Background="Transparent"
-                                     FontAttributes="Bold"
-                                     HeightRequest="50"
-                                     Clicked="CancelarButton_Clicked"/>
+                             CornerRadius="10" 
+                             HorizontalOptions="FillAndExpand"
+                             TextColor="Black"
+                             Background="Transparent"
+                             FontAttributes="Bold"
+                             HeightRequest="50"
+                             Clicked="CancelarButton_Clicked"/>
                                 <!-- Evento para Cancelar -->
                             </HorizontalStackLayout>
                         </StackLayout>
