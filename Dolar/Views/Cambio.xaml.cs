@@ -369,6 +369,8 @@ namespace Dolar.Views
         // Lógica para el botón "Comprar"
         private void OnComprarClicked(object sender, EventArgs e)
         {
+            
+
             if (decimal.TryParse(MontoEntry.Text, out decimal monto))
             {
                 if (TipoCambioVenta > 0)

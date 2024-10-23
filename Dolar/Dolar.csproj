@@ -81,6 +81,8 @@
 	
 	  <None Remove="Resources\Images\baseimg.jpg" />
 	
+	  <None Remove="Resources\Images\icon_flecha.png" />
+	
 	  <None Remove="Resources\Images\inicio.png" />
 	 
 	  <None Remove="Resources\Splash\1f4b2.png" />
