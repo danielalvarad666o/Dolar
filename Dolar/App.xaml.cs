@@ -10,6 +10,7 @@ namespace Dolar
     {
         public App()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH9ccnZURGRZUEBxWUY=");
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 
