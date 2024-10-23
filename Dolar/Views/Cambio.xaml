@@ -139,7 +139,9 @@
                             <sfInputLayout:SfTextInputLayout x:Name="NombreEmpresaInput" Hint="Nombre de la empresa" ContainerType="Outlined" OutlineCornerRadius="8">
                                 <Entry Text="{Binding NombreEmpresa}" TextColor="Black"/>
                             </sfInputLayout:SfTextInputLayout>
-                           
+                            <sfInputLayout:SfTextInputLayout x:Name="DireccionEmpresaInput" Hint="Dirección de la empresa" ContainerType="Outlined" OutlineCornerRadius="8">
+                                <Entry Text="{Binding DireccionEmpresa}" TextColor="Black"/>
+                            </sfInputLayout:SfTextInputLayout>
                             <sfInputLayout:SfTextInputLayout x:Name="CiudadInput" Hint="Ciudad" ContainerType="Outlined" OutlineCornerRadius="8">
                                 <Entry Text="{Binding Ciudad}" TextColor="Black"/>
                             </sfInputLayout:SfTextInputLayout>

@@ -499,12 +499,12 @@ namespace Dolar.Views
             // Obtener los valores del ViewModel
             string nombreEmpresa = NombreEmpresa;
             string direccionEmpresa = DireccionEmpresa;
-            
+            string ciudad = Ciudad;
             string estado = Estado;
 
 
             // Validar que los campos no estén vacíos (opcional)
-            if ( string.IsNullOrEmpty(nombreEmpresa) || string.IsNullOrEmpty(direccionEmpresa) ||  string.IsNullOrEmpty(estado))
+            if (string.IsNullOrEmpty(nombreEmpresa) || string.IsNullOrEmpty(direccionEmpresa) || string.IsNullOrEmpty(ciudad) || string.IsNullOrEmpty(estado))
     {
         await DisplayAlert("Error", "Por favor completa todos los campos.", "OK");
         return;
