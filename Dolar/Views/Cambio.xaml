@@ -13,7 +13,7 @@
 
                 <!-- Información de tipo de cambio -->
                 <VerticalStackLayout>
-                    <Label Text="{Binding CountryCode}" FontSize="Large" TextColor="Black"/>
+                    <Label Text="{Binding CountryCode}" TextTransform="Uppercase" FontSize="Large" TextColor="Black"/>
                     <Label Text="{Binding CurrencyName}" FontSize="Small" TextColor="Gray"/>
                 </VerticalStackLayout>
 
